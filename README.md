@@ -4,7 +4,7 @@ A Flutter-based web application for managing and viewing student marksheets with
 
 ## Features
 
-- 🔐 Secure authentication system
+- 🔐 Secure Google Sign-In authentication
 - 📊 Upload and process marksheets in CSV/Excel format
 - 🔍 Search students by roll number and name
 - 📈 Calculate percentage and grades automatically
@@ -14,14 +14,17 @@ A Flutter-based web application for managing and viewing student marksheets with
 
 ## Screenshots
 
-### Login Screen
+### Login Screen with Google Sign-In
 ![Login Screen](screenshots/login_screen.png)
+*Modern login interface with Google authentication*
 
 ### Dashboard Screen
 ![Dashboard Screen](screenshots/dashboard_screen.png)
+*Dashboard with search functionality and file upload*
 
-### Search Results
+### Search Results with Grade Display
 ![Search Results](screenshots/search_results.png)
+*Detailed student results with color-coded grades*
 
 ## Prerequisites
 
@@ -29,27 +32,46 @@ A Flutter-based web application for managing and viewing student marksheets with
 - Firebase account
 - Web browser (Chrome recommended)
 
-## Firebase Setup
+## Libraries Used
 
-1. Create a new Firebase project at [Firebase Console](https://console.firebase.google.com/)
-2. Enable Authentication (Email/Password)
-3. Create a Realtime Database
-4. Update the Firebase configuration in `lib/main.dart` with your project details:
+### Firebase Libraries
+- **firebase_core: ^2.24.2**
+  - Core Firebase functionality
+  - Required for initializing Firebase in the application
 
-```dart
-await Firebase.initializeApp(
-  options: const FirebaseOptions(
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    databaseURL: "YOUR_DATABASE_URL",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID",
-    measurementId: "YOUR_MEASUREMENT_ID",
-  ),
-);
-```
+- **firebase_auth: ^4.15.3**
+  - Handles authentication with Firebase
+  - Manages Google Sign-In integration
+
+- **firebase_database: ^10.3.8**
+  - Realtime Database integration
+  - Stores and retrieves student marksheet data
+
+### File Handling Libraries
+- **file_picker: ^6.1.1**
+  - Enables file selection for marksheet upload
+  - Supports both CSV and Excel files
+
+- **excel: ^4.0.2**
+  - Processes Excel (.xlsx) files
+  - Extracts data from spreadsheets
+
+- **csv: ^5.1.1**
+  - Handles CSV file parsing
+  - Converts CSV data to structured format
+
+### UI Libraries
+- **flutter_material: latest**
+  - Material Design components
+  - Modern and responsive UI elements
+
+- **google_sign_in: ^6.2.1**
+  - Implements Google Sign-In functionality
+  - Provides secure authentication flow
+
+- **google_sign_in_web: ^0.12.0**
+  - Web-specific implementation of Google Sign-In
+  - Handles browser-based authentication
 
 ## Installation
 
@@ -76,8 +98,9 @@ flutter run -d chrome
 ## Usage
 
 ### Login
-1. Enter your email and password
-2. Click the Login button
+- Click the "Sign in with Google" button
+- Select your Google account
+- Grant necessary permissions
 
 ### Dashboard
 1. Enter roll number and optional name to search
