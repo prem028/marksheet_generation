@@ -12,6 +12,52 @@ A Flutter-based web application for managing and viewing student marksheets with
 - 📱 Responsive design for all devices
 - 🌈 Modern and intuitive user interface
 
+## Project Languages & Configuration Files
+
+### Programming Languages
+- **Dart**
+  - Primary language used for Flutter development
+  - Handles all application logic and UI components
+  - Version: Dart 3.0 or higher
+
+- **JavaScript**
+  - Used for web-specific implementations
+  - Handles Firebase web integration
+  - Manages browser-based authentication
+
+### Configuration Files
+- **CMake**
+  - Build system for native code compilation
+  - Handles C++ dependencies for Flutter
+  - Used in Windows/Linux builds
+  - Located in `windows/CMakeLists.txt`
+
+- **Swift**
+  - Used for iOS-specific implementations
+  - Handles native iOS features
+  - Located in `ios/Runner/` directory
+
+- **Kotlin**
+  - Used for Android-specific implementations
+  - Handles native Android features
+  - Located in `android/app/` directory
+
+- **YAML**
+  - Used for Flutter project configuration
+  - Defines project dependencies and assets
+  - Main file: `pubspec.yaml`
+
+### Web Files
+- **HTML**
+  - Entry point for web application
+  - Contains web-specific configurations
+  - Located in `web/index.html`
+
+- **CSS**
+  - Styles for web application
+  - Customizes web-specific appearance
+  - Located in `web/styles.css`
+
 ## Screenshots
 
 ### Login Screen with Google Sign-In
