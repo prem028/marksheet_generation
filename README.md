@@ -119,6 +119,41 @@ A Flutter-based web application for managing and viewing student marksheets with
   - Web-specific implementation of Google Sign-In
   - Handles browser-based authentication
 
+## External APIs & Services
+
+### Firebase APIs
+- **Firebase Authentication API**
+  - Handles secure user authentication
+  - Manages Google Sign-In integration
+  - Provides user session management
+  - Endpoint: `https://identitytoolkit.googleapis.com/`
+
+- **Firebase Realtime Database API**
+  - Stores and retrieves student marksheet data
+  - Handles real-time data synchronization
+  - Manages data queries and filtering
+  - Endpoint: `https://marksheet-project-f6255-default-rtdb.firebaseio.com/`
+
+### Google APIs
+- **Google Sign-In API**
+  - Provides secure OAuth 2.0 authentication
+  - Manages user consent and permissions
+  - Returns user profile information
+  - Endpoint: `https://accounts.google.com/o/oauth2/`
+
+### File Processing APIs
+- **Excel File Processing**
+  - Library: `excel: ^4.0.2`
+  - Handles .xlsx file parsing
+  - Supports multiple sheets and formatting
+  - Used for marksheet uploads
+
+- **CSV Processing**
+  - Library: `csv: ^5.1.1`
+  - Parses CSV file data
+  - Handles different delimiters and formats
+  - Used for marksheet uploads
+
 ## Installation
 
 1. Clone the repository:
