@@ -154,6 +154,82 @@ A Flutter-based web application for managing and viewing student marksheets with
   - Handles different delimiters and formats
   - Used for marksheet uploads
 
+## API Implementation Details
+
+### Firebase Authentication API
+```dart
+// lib/screens/login_screen.dart
+Future<void> _signInWithGoogle() async {
+  try {
+    GoogleAuthProvider googleProvider = GoogleAuthProvider();
+    googleProvider.addScope('email');
+    googleProvider.setCustomParameters({
+      'prompt': 'select_account'
+    });
+    
+    final UserCredential userCredential = 
+        await FirebaseAuth.instance.signInWithPopup(googleProvider);
+  } catch (e) {
+    // Error handling
+  }
+}
+```
+
+### Firebase Realtime Database API
+```dart
+// lib/screens/dashboard_screen.dart
+// Storing marksheet data
+await _database.child('marksheets').child(rollNo).set({
+  'student_info': {
+    'roll_no': originalRollNo,
+    'name': details['Name'] ?? '',
+    // ... other student details
+  },
+  'academic_marks': marks,
+  'results': {
+    'percentage': percentage.toStringAsFixed(2),
+    'grade': grade,
+  }
+});
+
+// Retrieving marksheet data
+final snapshot = await _database
+    .child('marksheets')
+    .child(rollNo)
+    .get();
+```
+
+### File Processing APIs
+```dart
+// lib/screens/dashboard_screen.dart
+// Excel Processing
+if (extension == 'xlsx') {
+  final excelFile = excel.Excel.decodeBytes(bytes!);
+  await _processAndStoreExcelData(excelFile);
+}
+
+// CSV Processing
+if (extension == 'csv') {
+  final csvString = String.fromCharCodes(bytes!);
+  final rows = const CsvToListConverter().convert(csvString);
+  await _processAndStoreData(rows);
+}
+```
+
+### Google Sign-In API
+```dart
+// lib/main.dart
+void main() async {
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      // ... other Firebase configuration
+    ),
+  );
+}
+```
+
 ## Installation
 
 1. Clone the repository:
